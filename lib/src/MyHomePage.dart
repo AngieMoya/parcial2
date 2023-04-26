@@ -1,4 +1,9 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
+import 'package:parcial2/src/Agend.dart';
+import 'package:parcial2/src/Barber.dart';
+import 'ServicesAndPrice.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -25,75 +30,40 @@ class _MyHomePageState extends State<MyHomePage> {
       length: 3,
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Barber'),
+          leading: Builder(builder: (BuildContext context) {
+            return Container(
+              margin: const EdgeInsets.only(left: 15),
+              child: Image.asset('././assets/images/logo.png'),
+            );
+          }),
+          title: const Text(
+            'BarberApp',
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+              color: Color.fromARGB(255, 254, 211, 91),
+            ),
+          ),
           bottom: const TabBar(
+            indicatorColor: Color.fromARGB(255, 254, 211, 91),
             tabs: <Widget>[
               Tab(
-                icon: Icon(Icons.calendar_month),
+                text: 'Agendar cita',
               ),
               Tab(
-                icon: Icon(Icons.price_check),
+                text: 'Servicios',
               ),
               Tab(
-                icon: Icon(Icons.person),
+                text: 'Barberos',
               ),
             ],
           ),
         ),
-        body: TabBarView(
+        body: const TabBarView(
           children: <Widget>[
-            const Center(
-              child: Text("Agenda"),
-            ),
-            Column(
-              children: [
-                const Text(
-                  "Servicios y Precios",
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.blueGrey,
-                  ),
-                ),
-                Card(
-                  child: SizedBox(
-                    width: 300,
-                    height: 100,
-                    child: Center(
-                        child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [Text('Corte Hombre'), Text("30.000")],
-                    )),
-                  ),
-                ),
-                Card(
-                  child: SizedBox(
-                    width: 300,
-                    height: 100,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [Text('Corte Nino'), Text("25.000")],
-                    ),
-                  ),
-                ),
-                Card(
-                  child: SizedBox(
-                    width: 300,
-                    height: 100,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Text('Combo corte + barba'),
-                        Text("45.000")
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            const Center(
-              child: Text("Barberos"),
-            ),
+            Agend(),
+            ServicesAndPrice(),
+            Barber(),
           ],
         ),
       ),
