@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:parcial2/src/Agend.dart';
 import 'package:parcial2/src/Barber.dart';
@@ -59,11 +57,11 @@ class _MyHomePageState extends State<MyHomePage> {
             ],
           ),
         ),
-        body: const TabBarView(
+        body: TabBarView(
           children: <Widget>[
             Agend(),
-            ServicesAndPrice(),
-            Barber(),
+            const ServicesAndPrice(),
+            const Barber(),
           ],
         ),
       ),
